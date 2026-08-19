@@ -1,15 +1,25 @@
+# Dependencies
 node_modules/
 
+# Environment / secrets
 .env
 .env.*
 !.env.example
 
+# WhatsApp authentication and cache
 .wwebjs_auth/
 .wwebjs_cache/
 
+# Local user data
+data/
+
+# Test output
 test-results/
+
+# Logs
 *.log
 
+# Credentials / tokens / sessions
 credentials/
 tokens/
 sessions/
