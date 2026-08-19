@@ -1,0 +1,20 @@
+node_modules/
+
+.env
+.env.*
+!.env.example
+
+.wwebjs_auth/
+.wwebjs_cache/
+
+test-results/
+*.log
+
+credentials/
+tokens/
+sessions/
+auth/
+
+# OS files
+Thumbs.db
+.DS_Store

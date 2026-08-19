@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Companion</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <!-- Onboarding modal — first visit only -->
+  <div id="onboarding" class="modal hidden" aria-hidden="true">
+    <div class="modal-card">
+      <h2>Hey there 👋</h2>
+      <p class="muted">Let's set things up so we can get to know each other.</p>
+
+      <label>What's your name?</label>
+      <input id="onb-name" type="text" maxlength="40" placeholder="e.g. Arjun" />
+
+      <label>What should I call myself?</label>
+      <input id="onb-char" type="text" maxlength="40" placeholder="e.g. Lasya" />
+
+      <label>A little about me (optional)</label>
+      <textarea id="onb-bio" rows="3" maxlength="500"
+        placeholder="A warm, curious person who loves music and late-night chats."></textarea>
+
+      <div class="row gap">
+        <button id="onb-save" class="btn primary">Start chatting →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings modal -->
+  <div id="settings" class="modal hidden" aria-hidden="true">
+    <div class="modal-card">
+      <h2>Settings</h2>
+
+      <h3>Your profile</h3>
+      <label>Your name</label>
+      <input id="set-name" type="text" maxlength="40" />
+
+      <h3>Character</h3>
+      <label>Name</label>
+      <input id="set-char-name" type="text" maxlength="40" />
+
+      <label>Bio</label>
+      <textarea id="set-bio" rows="3" maxlength="500"></textarea>
+
+      <label>Interests (comma-separated)</label>
+      <input id="set-interests" type="text" />
+
+      <label>Avatar URL (optional)</label>
+      <input id="set-avatar" type="text" placeholder="https://..." />
+
+      <h3>Model</h3>
+      <select id="set-model"></select>
+      <p id="model-info" class="muted" style="font-size:12px;margin:4px 0 0"></p>
+
+      <h3>Memory</h3>
+      <div id="mem-list" class="mem-list"></div>
+
+      <h3>Switch account</h3>
+      <div id="account-list" class="account-list"></div>
+
+      <h3>Danger zone</h3>
+      <div class="row gap">
+        <button id="btn-reset" class="btn danger">Reset relationship & history</button>
+        <button id="set-close" class="btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <!-- Sidebar — sessions per user -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span>💬 Chats</span>
+        <button id="btn-new-session" class="btn-mini" title="New chat">＋</button>
+      </div>
+      <div id="session-list" class="session-list"></div>
+    </aside>
+
+    <main class="app">
+      <header class="topbar">
+        <div class="brand">
+          <button id="btn-sidebar-toggle" class="icon-btn" title="Toggle chats">☰</button>
+          <div id="avatar" class="avatar">🌱</div>
+          <div>
+            <div id="char-name" class="char-name">Lasya</div>
+            <div id="char-status" class="char-status muted">Stranger</div>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button id="btn-settings" class="icon-btn" title="Settings">⚙️</button>
+        </div>
+      </header>
+
+      <section class="rel-bar" aria-label="Relationship progress">
+        <div class="rel-row">
+          <span class="rel-label" id="rel-emoji">🌱</span>
+          <div class="rel-meter">
+            <div id="rel-fill" class="rel-fill"></div>
+          </div>
+          <span id="rel-next" class="rel-next muted">…</span>
+        </div>
+        <div id="rel-promote" class="rel-promote hidden"></div>
+      </section>
+
+      <section id="chat" class="chat" aria-live="polite"></section>
+
+      <section class="composer">
+        <textarea id="input" rows="1" placeholder="Type something… (Enter to send, Shift+Enter for new line)"></textarea>
+        <button id="send" class="btn primary">Send</button>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
